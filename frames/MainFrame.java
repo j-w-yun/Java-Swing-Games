@@ -23,23 +23,20 @@ public class MainFrame extends JFrame implements KeyListener
 
 		// Set stage size (x, y)
 		stage = new Stage(1200, 800);
-		player = new Player(200, 200, stage);
+
+        // Set player and connect it to stage (starting position x, y, speed, hitboxLength, Stage stage)
+		player = new Player(200, 200, 10, 10, stage);
 		
 		// Prepare stage display panel
+        // Add stage and player
 		dp = new DisplayPanel(stage, player);
 
 		// Make some walls
+		// Draws a wall from a line b/w two points (x1, y1, x2, y2)
 		stage.makeWall(100, 100, 1100, 100);
-		stage.makeWall(101, 101, 1101, 101);
-
 		stage.makeWall(1100, 100, 1100, 700);
-		stage.makeWall(1101, 101, 1101, 701);
-
 		stage.makeWall(1100, 700, 100, 700);
-		stage.makeWall(1101, 701, 101, 701);
-
 		stage.makeWall(100, 700, 100, 100);
-		stage.makeWall(101, 701, 101, 101);
 
 		// Add keyboard listener
 		addKeyListener(this);

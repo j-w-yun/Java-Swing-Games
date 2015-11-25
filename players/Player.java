@@ -8,119 +8,124 @@ public class Player
 	private int xStart, yStart;
 
 	private int xPos, yPos;
-	private int xPosBAK, yPosBAK;
-	private int xPosUndo, yPosUndo;
+	private int xPosBefore, yPosBefore;
 
 	private Stage stage;
 
+	private int hitboxLength;
+	private int radius;
+
+	private int speed;
+
 	// Starting position (x, y)
-	public Player(int xStart, int yStart, Stage stage)
+	public Player(int xStart, int yStart, int speed, int hitboxLength, Stage stage)
 	{
 		this.xStart = xStart;
 		this.yStart = yStart;
 
-		xPos = xStart;
-		yPos = yStart;
-		xPosBAK = xPos;
-		yPosBAK = yPos;
-
-		xPosUndo = 3;
-		yPosUndo = 3;
+		this.hitboxLength = hitboxLength;
+		this.speed = speed;
 
 		this.stage = stage;
 
-		bringToStage();
+		xPos = xStart;
+		yPos = yStart;
+		xPosBefore = 10;
+		yPosBefore = 10;
+
+		generateHitbox();
 	}
 
-	// Player size and shape determined here
-	public void bringToStage()
+	// Player size determined here
+	public void generateHitbox()
 	{
-		// Fill in new position
-		//fill(xPos, yPos, By.PLAYER);		// Center
-		fill(xPos, yPos - 3, By.PLAYER);
-		fill(xPos, yPos - 2, By.PLAYER);
-		fill(xPos, yPos - 1, By.PLAYER);
-		fill(xPos, yPos + 3, By.PLAYER);
-		fill(xPos, yPos + 2, By.PLAYER);
-		fill(xPos, yPos + 1, By.PLAYER);
-		fill(xPos - 3, yPos, By.PLAYER);
-		fill(xPos - 2, yPos, By.PLAYER);
-		fill(xPos - 1, yPos, By.PLAYER);
-		fill(xPos + 3, yPos, By.PLAYER);
-		fill(xPos + 2, yPos, By.PLAYER);
-		fill(xPos + 1, yPos, By.PLAYER);
+		radius = hitboxLength / 2;
 
-		// Delete previous position of player
-		//fill(xPosUndo, yPosUndo, By.FLOOR);		// Center
-		fill(xPosUndo, yPosUndo - 3, By.FLOOR);
-		fill(xPosUndo, yPosUndo - 2, By.FLOOR);
-		fill(xPosUndo, yPosUndo - 1, By.FLOOR);
-		fill(xPosUndo, yPosUndo + 3, By.FLOOR);
-		fill(xPosUndo, yPosUndo + 2, By.FLOOR);
-		fill(xPosUndo, yPosUndo + 1, By.FLOOR);
-		fill(xPosUndo - 3, yPosUndo, By.FLOOR);
-		fill(xPosUndo - 2, yPosUndo, By.FLOOR);
-		fill(xPosUndo - 1, yPosUndo, By.FLOOR);
-		fill(xPosUndo + 3, yPosUndo, By.FLOOR);
-		fill(xPosUndo + 2, yPosUndo, By.FLOOR);
-		fill(xPosUndo + 1, yPosUndo, By.FLOOR);
+		// Erase previous box
+		for(int j = xPosBefore - radius; j < xPosBefore + radius; j++)
+		{
+			fill(j, yPosBefore + radius, By.FLOOR);
+			fill(j, yPosBefore - radius, By.FLOOR);
+		}
+		for(int k = yPosBefore - radius; k < yPosBefore + radius; k++)
+		{
+			fill(xPosBefore + radius, k, By.FLOOR);
+			fill(xPosBefore - radius, k, By.FLOOR);
+		}
 
-		xPosUndo = xPos;
-		yPosUndo = yPos;
+		// Make new box
+		for(int j = xPos - radius; j < xPos + radius; j++)
+		{
+			fill(j, yPos + radius, By.PLAYER);
+			fill(j, yPos - radius, By.PLAYER);
+		}
+		for(int k = yPos - radius; k < yPos + radius; k++)
+		{
+			fill(xPos + radius, k, By.PLAYER);
+			fill(xPos - radius, k, By.PLAYER);
+		}
+
+		xPosBefore = xPos;
+		yPosBefore = yPos;
 	}
 	public void fill(int x, int y, By what)
 	{
-		// If wall exists, don't move player
-		if(stage.tile[x][y].occupied == By.WALL)
-		{
-			xPos = xPosBAK;
-			yPos = yPosBAK;
-		}
-		else
-		{
-			stage.tile[x][y].occupied = what;
-		}
-	}
-
-	public int[] getPos()
-	{
-		int[] toReturn = {xPos, yPos};
-		return toReturn;
+		stage.tile[x][y].occupied = what;
 	}
 
 	public void move(Move move)
 	{
 		if(move == Move.RIGHT)
 		{
-			xPosBAK = xPos;		// Make backup in case player hits wall
+			for(int j = xPos + radius; j < xPos + radius + speed; j++)
+			{
+				if(stage.tile[j][yPos].occupied == By.WALL)
+				{
+					return;
+				}
+			}	
+			xPos += speed;				// Move player
 
-			xPos += 3;			// Move player
-
-			bringToStage();		// Fill in tiles
+			generateHitbox();		// Fill in tiles
 		}
 		else if(move == Move.LEFT)
 		{
-			xPosBAK = xPos;
-
-			xPos -= 3;
+			for(int j = xPos - radius - speed; j < xPos - radius; j++)
+			{
+				if(stage.tile[j][yPos].occupied == By.WALL)
+				{
+					return;
+				}
+			}
+			xPos -= speed;
 			
-			bringToStage();
+			generateHitbox();
 		}
 		else if(move == Move.UP)
 		{
-			yPosBAK = yPos;
+			for(int k = yPos - radius - speed; k < yPos - radius; k++)
+			{
+				if(stage.tile[xPos][k].occupied == By.WALL)
+				{
+					return;
+				}
+			}
+			yPos -= speed;
 			
-			yPos -= 3;
-			
-			bringToStage();
+			generateHitbox();
 		}
 		else if(move == Move.DOWN)
 		{
-			yPosBAK = yPos;
+			for(int k = yPos + radius; k < yPos + radius + speed; k++)
+			{
+				if(stage.tile[xPos][k].occupied == By.WALL)
+				{
+					return;
+				}
+			}
+			yPos += speed;
 			
-			yPos += 3;
-			
-			bringToStage();
+			generateHitbox();
 		}
 	}
 }

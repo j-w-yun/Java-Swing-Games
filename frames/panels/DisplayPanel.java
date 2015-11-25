@@ -10,6 +10,10 @@ import java.awt.event.*;
 
 public class DisplayPanel extends JPanel
 {
+	// Timer based animation
+	// Timer timer;
+	// ActionListener update;
+
 	// For drawing pixels
 	private Graphics g;
 
@@ -20,7 +24,14 @@ public class DisplayPanel extends JPanel
 	// Default wall color is Color.CYAN
 	// Change by calling setWallColor();
 	private Color wallColor = Color.CYAN;
+
+	// Default player color is Color.MAGENTA
+	// Change by calling setPlayerColor();
 	private Color playerColor = Color.MAGENTA;
+
+	// Default projectile color is Color.YELLOW
+	// Change by calling setProjectileColor();
+	private Color projectileColor = Color.YELLOW;
 
 	public DisplayPanel(Stage stage, Player player)
 	{
@@ -59,6 +70,10 @@ public class DisplayPanel extends JPanel
 				{
 					drawDot(j, k, playerColor);
 				}
+				else if(stage.tile[j][k].occupied == By.PROJECTILE)
+				{
+					drawDot(j, k, projectileColor);
+				}
 			}
 		}
 	}
@@ -82,5 +97,9 @@ public class DisplayPanel extends JPanel
 	public void setPlayerColor(Color playerColor)
 	{
 		this.playerColor = playerColor;
+	}
+	public void setProjectileColor(Color projectileColor)
+	{
+		this.projectileColor = projectileColor;
 	}
 }
