@@ -2,10 +2,10 @@ import frames.*;
 import frames.panels.*;
 import maps.*;
 
-public class BulletBound
+public class Tentative
 {
 	public static void main(String[] args)
 	{
-		new MainFrame("Bullet Bound");
+		new MainFrame("Tentative");
 	}
 }

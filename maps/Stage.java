@@ -4,9 +4,6 @@ public class Stage
 {
 	public Tile[][] tile;
 
-	// Wall slope at (x, y)
-	private double[][] wallSlope;
-
 	// Copy access
 	public Tile[][] getTileCopy()
 	{
@@ -26,9 +23,6 @@ public class Stage
 	{
 		// Make tiles
 		tile = new Tile[x][y];
-
-		// Make slopes
-		wallSlope = new double[x][y];
 
 		for(int j = 0; j < x; j++)
 		{
