@@ -27,8 +27,8 @@ public class MainFrame extends JFrame implements KeyListener
 		stage = new Stage(1200, 800);
 
         // (xStart, yStart, speed, hitboxLength, stage)
-		player1 = new Player(200, 200, 3, 10, stage, By.PLAYER1);
-        player2 = new Player(1000, 600, 3, 10, stage, By.PLAYER2);
+		player1 = new Player(200, 200, 5, 10, stage, By.PLAYER1);
+        player2 = new Player(1000, 600, 5, 10, stage, By.PLAYER2);
 		
 		// Prepare stage display panel
         // Add stage and player1
@@ -106,7 +106,6 @@ public class MainFrame extends JFrame implements KeyListener
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            dp.releasedS = false;
             dp.addProjectile(player1);
             dp.repaint();
         }
@@ -133,7 +132,6 @@ public class MainFrame extends JFrame implements KeyListener
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            dp.releasedSh = false;
             dp.addProjectile(player2);
             dp.repaint();
         }
@@ -156,7 +154,7 @@ public class MainFrame extends JFrame implements KeyListener
             player1.releasedD = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            dp.releasedS = true;
+            // Do nothing.
         }
 
         // Player 2 controls
@@ -173,7 +171,7 @@ public class MainFrame extends JFrame implements KeyListener
             player2.releasedD = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            dp.releasedSh = true;
+            // Do nothing.
         }
     }
 }

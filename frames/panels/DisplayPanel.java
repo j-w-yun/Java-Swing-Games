@@ -36,10 +36,6 @@ public class DisplayPanel extends JPanel
 	// Change by calling setProjectileColor();
 	private Color projectileColor = Color.CYAN;
 
-	// For holding down space bar
-	public boolean releasedS = true;
-	public boolean releasedSh = true;
-
 	public DisplayPanel(Stage stage, Player player1, Player player2)
 	{
 		// Set background to black
@@ -56,7 +52,7 @@ public class DisplayPanel extends JPanel
 		// Create Timer for animations
 		// (Time between next call (ms), action to be called)
 		// 15ms yields 60 fps
-		new Timer(20, paintTimer).start();
+		new Timer(15, paintTimer).start();
 	}
 
 	Action paintTimer = new AbstractAction()
@@ -104,17 +100,6 @@ public class DisplayPanel extends JPanel
 			if(!player2.releasedU)
 			{
 				player2.move(Move.UP);
-			}
-
-			// Smooth firing
-			// Too rapid?
-			if(!releasedS)
-			{
-				addProjectile(player1);
-			}
-			if(!releasedSh)
-			{
-				addProjectile(player2);
 			}
 			repaint();
 		}

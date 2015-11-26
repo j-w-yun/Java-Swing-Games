@@ -201,11 +201,11 @@ public class Projectile
 
 			xPos += speed;			// Move player
 
-			for(int j = xPos - hitboxLength - speed; j < xPos + hitboxLength + speed; j++)
+			for(int j = xPos - hitboxLength + speed; j < xPos + hitboxLength; j++)
 			{
 				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
-					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
 						deleteProjectile = true;
 					}
@@ -227,11 +227,11 @@ public class Projectile
 
 			xPos -= speed;
 
-			for(int j = xPos - hitboxLength - speed; j < xPos + hitboxLength + speed; j++)
+			for(int j = xPos - hitboxLength; j < xPos + hitboxLength - speed; j++)
 			{
 				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
-					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
 						deleteProjectile = true;
 					}
@@ -255,9 +255,9 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos - hitboxLength - speed; k < yPos; k++)
+				for(int k = yPos - hitboxLength; k < yPos + hitboxLength - speed; k++)
 				{
-					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
 						deleteProjectile = true;
 					}
@@ -281,9 +281,9 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos; k < yPos + hitboxLength + speed; k++)
+				for(int k = yPos - hitboxLength + speed; k < yPos + hitboxLength; k++)
 				{
-					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
 						deleteProjectile = true;
 					}
