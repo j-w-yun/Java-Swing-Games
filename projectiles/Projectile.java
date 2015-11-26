@@ -31,6 +31,9 @@ public class Projectile
 	private int iterator = 0;
 	private boolean deleteTail = false;
 
+	// Delete projectile
+	private boolean deleteProjectile = false;
+
 	public Projectile(int xStart, int yStart, Move facing, int speed, int hitboxLength, Stage stage)
 	{
 		this.stage = stage;
@@ -39,23 +42,23 @@ public class Projectile
 
 		if(this.facing == Move.LEFT)
 		{
-			xPos = xStart - 1;
+			xPos = xStart;
 			yPos = yStart;
 		}
 		else if(this.facing == Move.RIGHT)
 		{
-			xPos = xStart + 1;
+			xPos = xStart;
 			yPos = yStart;
 		}
 		else if(this.facing == Move.UP)
 		{
 			xPos = xStart;
-			yPos = yStart - 1;
+			yPos = yStart;
 		}
 		else if(this.facing == Move.DOWN)
 		{
 			xPos = xStart;
-			yPos = yStart + 1;
+			yPos = yStart;
 		}
 
 		this.speed = speed;
@@ -142,6 +145,49 @@ public class Projectile
 
 	public void move()
 	{
+		if(deleteProjectile)
+		{
+			// Delete tail if iterator exceeds tailLength
+			if(iterator > tailLength - 1)
+			{	
+				//Permanently true from now on
+				deleteTail = true;
+				iterator = 0;
+			}
+
+			if(deleteTail)
+			{
+				stage.tile[tail[iterator][0]][tail[iterator][1]].occupied = By.FLOOR;
+			}
+			iterator++;
+
+			// Erase box
+			for(int j = xPosBefore - radius; j < xPosBefore + radius; j++)
+			{
+				if(stage.tile[j][yPos + radius].occupied != By.DEBRIS)
+				{
+					fill(j, yPos + radius, By.FLOOR);			
+				}
+				if(stage.tile[j][yPos - radius].occupied != By.DEBRIS)
+				{
+					fill(j, yPos - radius, By.FLOOR);			
+				}
+			}
+			for(int k = yPos - radius; k < yPos + radius; k++)
+			{
+				if(stage.tile[xPos + radius][k].occupied != By.DEBRIS)
+				{
+					fill(xPos + radius, k, By.FLOOR);			
+				}
+				if(stage.tile[xPos - radius][k].occupied != By.DEBRIS)
+				{
+					fill(xPos - radius, k, By.FLOOR);			
+				}
+			}
+			return;
+		}
+
+		// Movement of projectiles
 		if(facing == Move.RIGHT)
 		{
 			for(int j = xPos + radius; j < xPos + radius + speed + 2; j++)
@@ -152,7 +198,16 @@ public class Projectile
 					return;
 				}
 			}	
+
 			xPos += speed;			// Move player
+
+			for(int j = xPos - radius; j < xPos + radius + speed; j++)
+			{
+				if(stage.tile[j][yPos].occupied == By.PROJECTILE)
+				{
+					deleteProjectile = true;
+				}
+			}
 
 			generateHitbox();		// Fill in tiles
 		}
@@ -166,7 +221,16 @@ public class Projectile
 					return;
 				}
 			}
+
 			xPos -= speed;
+
+			for(int j = xPos - radius - speed; j < xPos + radius; j++)
+			{
+				if(stage.tile[j][yPos].occupied == By.PROJECTILE)
+				{
+					deleteProjectile = true;
+				}
+			}
 
 			generateHitbox();
 		}
@@ -180,7 +244,16 @@ public class Projectile
 					return;
 				}
 			}
+
 			yPos -= speed;
+
+			for(int k = yPos - radius - speed; k < yPos + radius; k++)
+			{
+				if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+				{
+					deleteProjectile = true;
+				}
+			}
 			
 			generateHitbox();
 		}
@@ -195,6 +268,14 @@ public class Projectile
 				}
 			}
 			yPos += speed;
+
+			for(int k = yPos - radius; k < yPos + radius + speed; k++)
+			{
+				if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+				{
+					deleteProjectile = true;
+				}
+			}
 			
 			generateHitbox();
 		}

@@ -2,6 +2,7 @@ package frames;
 
 import frames.panels.DisplayPanel;
 import maps.Stage;
+import maps.By;
 import players.Player;
 import players.Move;
 
@@ -14,7 +15,8 @@ public class MainFrame extends JFrame implements KeyListener
 {
 	private DisplayPanel dp;
 	private Stage stage;
-	private Player player;
+	private Player player1;
+    private Player player2;
 
 	public MainFrame(String title)
 	{
@@ -25,11 +27,12 @@ public class MainFrame extends JFrame implements KeyListener
 		stage = new Stage(1200, 800);
 
         // (xStart, yStart, speed, hitboxLength, stage)
-		player = new Player(200, 200, 3, 10, stage);
+		player1 = new Player(200, 200, 3, 10, stage, By.PLAYER1);
+        player2 = new Player(1000, 600, 3, 10, stage, By.PLAYER2);
 		
 		// Prepare stage display panel
-        // Add stage and player
-		dp = new DisplayPanel(stage, player);
+        // Add stage and player1
+		dp = new DisplayPanel(stage, player1, player2);
 
 		// Make some walls
 		// Draws a wall from a line b/w two points (x1, y1, x2, y2)
@@ -81,49 +84,96 @@ public class MainFrame extends JFrame implements KeyListener
     @Override
     public void keyPressed(KeyEvent e)
     {
+        // Player 1 controls
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            player.releasedR = false;
-            player.move(Move.RIGHT);
+            player1.releasedR = false;
+            player1.move(Move.RIGHT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            player.releasedL = false;
-            player.move(Move.LEFT);
+            player1.releasedL = false;
+            player1.move(Move.LEFT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            player.releasedU = false;
-            player.move(Move.UP);
+            player1.releasedU = false;
+            player1.move(Move.UP);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            player.releasedD = false;
-            player.move(Move.DOWN);
+            player1.releasedD = false;
+            player1.move(Move.DOWN);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             dp.releasedS = false;
-            dp.addProjectile();
+            dp.addProjectile(player1);
+            dp.repaint();
+        }
+
+        // Player 2 controls
+        if (e.getKeyCode() == KeyEvent.VK_D) {
+            player2.releasedR = false;
+            player2.move(Move.RIGHT);
+            dp.repaint();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            player2.releasedL = false;
+            player2.move(Move.LEFT);
+            dp.repaint();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_W) {
+            player2.releasedU = false;
+            player2.move(Move.UP);
+            dp.repaint();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+            player2.releasedD = false;
+            player2.move(Move.DOWN);
+            dp.repaint();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            dp.releasedSh = false;
+            dp.addProjectile(player2);
             dp.repaint();
         }
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e)
+    {
+        // Player 1 controls
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            player.releasedR = true;
+            player1.releasedR = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            player.releasedL = true;
+            player1.releasedL = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            player.releasedU = true;
+            player1.releasedU = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            player.releasedD = true;
+            player1.releasedD = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             dp.releasedS = true;
+        }
+
+        // Player 2 controls
+        if (e.getKeyCode() == KeyEvent.VK_D) {
+            player2.releasedR = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            player2.releasedL = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_W) {
+            player2.releasedU = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+            player2.releasedD = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            dp.releasedSh = true;
         }
     }
 }

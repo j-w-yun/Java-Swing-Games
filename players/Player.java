@@ -31,8 +31,11 @@ public class Player
 	public boolean releasedU = true;
 	public boolean releasedD = true;
 
+	// Player number
+	private By player;
+
 	// Starting position (x, y)
-	public Player(int xStart, int yStart, int speed, int hitboxLength, Stage stage)
+	public Player(int xStart, int yStart, int speed, int hitboxLength, Stage stage, By player)
 	{
 		this.xStart = xStart;
 		this.yStart = yStart;
@@ -41,6 +44,8 @@ public class Player
 		this.speed = speed;
 
 		this.stage = stage;
+
+		this.player = player;
 
 		xPos = xStart;
 		yPos = yStart;
@@ -70,13 +75,13 @@ public class Player
 		// Make new box
 		for(int j = xPos - radius; j < xPos + radius; j++)
 		{
-			fill(j, yPos + radius, By.PLAYER);
-			fill(j, yPos - radius, By.PLAYER);
+			fill(j, yPos + radius, player);
+			fill(j, yPos - radius, player);
 		}
 		for(int k = yPos - radius; k < yPos + radius; k++)
 		{
-			fill(xPos + radius, k, By.PLAYER);
-			fill(xPos - radius, k, By.PLAYER);
+			fill(xPos + radius, k, player);
+			fill(xPos - radius, k, player);
 		}
 
 		xPosBefore = xPos;

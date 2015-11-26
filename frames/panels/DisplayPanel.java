@@ -18,34 +18,37 @@ public class DisplayPanel extends JPanel
 
 	// Get in constructor
 	private Stage stage;
-	private Player player;
+	private Player player1;
+	private Player player2;
 
 	// Projectiles
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
-	// Default wall color is Color.CYAN
+	// Default wall color is Color.RED
 	// Change by calling setWallColor();
 	private Color wallColor = Color.CYAN;
 
-	// Default player color is Color.MAGENTA
-	// Change by calling setPlayerColor();
-	private Color playerColor = Color.MAGENTA;
+	// Change by calling setPlayer#Color();
+	private Color player1Color = Color.BLUE;
+	private Color player2Color = Color.RED;
 
-	// Default projectile color is Color.YELLOW
+	// Default projectile color is Color.CYAN
 	// Change by calling setProjectileColor();
 	private Color projectileColor = Color.CYAN;
 
 	// For holding down space bar
 	public boolean releasedS = true;
+	public boolean releasedSh = true;
 
-	public DisplayPanel(Stage stage, Player player)
+	public DisplayPanel(Stage stage, Player player1, Player player2)
 	{
 		// Set background to black
 		setOpaque(true);
 		setBackground(Color.BLACK);
 
 		this.stage = stage;
-		this.player = player;
+		this.player1 = player1;
+		this.player2 = player2;
 
 		// Set panel size new Dimension(x, y)
 		setPreferredSize(new Dimension(stage.tile.length, stage.tile[0].length));
@@ -70,39 +73,60 @@ public class DisplayPanel extends JPanel
 			}
 
 			// Smooth movement
-			if(!player.releasedR)
+			if(!player1.releasedR)
 			{
-				player.move(Move.RIGHT);
+				player1.move(Move.RIGHT);
 			}
-			if(!player.releasedL)
+			if(!player1.releasedL)
 			{
-				player.move(Move.LEFT);
+				player1.move(Move.LEFT);
 			}
-			if(!player.releasedD)
+			if(!player1.releasedD)
 			{
-				player.move(Move.DOWN);
+				player1.move(Move.DOWN);
 			}
-			if(!player.releasedU)
+			if(!player1.releasedU)
 			{
-				player.move(Move.UP);
+				player1.move(Move.UP);
+			}
+			if(!player2.releasedR)
+			{
+				player2.move(Move.RIGHT);
+			}
+			if(!player2.releasedL)
+			{
+				player2.move(Move.LEFT);
+			}
+			if(!player2.releasedD)
+			{
+				player2.move(Move.DOWN);
+			}
+			if(!player2.releasedU)
+			{
+				player2.move(Move.UP);
 			}
 
 			// Smooth firing
 			// Too rapid?
 			if(!releasedS)
 			{
-				addProjectile();
+				addProjectile(player1);
+			}
+			if(!releasedSh)
+			{
+				addProjectile(player2);
 			}
 			repaint();
 		}
 	};
 
-	public void addProjectile()
+	public void addProjectile(Player player)
 	{
 		// (xStart, yStart, facing, speed, hitboxLength, stage)
-		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 3, 5, stage);
+		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 7, 5, stage);
 		projectiles.add(temp);
 	}
+
 
 	@Override
 	public void paintComponent(Graphics g)
@@ -122,9 +146,13 @@ public class DisplayPanel extends JPanel
 				{
 					drawDot(j, k, wallColor);
 				}
-				else if(stage.tile[j][k].occupied == By.PLAYER)
+				else if(stage.tile[j][k].occupied == By.PLAYER1)
 				{
-					drawDot(j, k, playerColor);
+					drawDot(j, k, player1Color);
+				}
+				else if(stage.tile[j][k].occupied == By.PLAYER2)
+				{
+					drawDot(j, k, player2Color);
 				}
 				else if(stage.tile[j][k].occupied == By.PROJECTILE)
 				{
@@ -132,7 +160,7 @@ public class DisplayPanel extends JPanel
 				}
 				else if(stage.tile[j][k].occupied == By.DEBRIS)
 				{
-					drawDot(j, k, projectileColor);
+					drawDot(j, k, Color.BLUE);
 				}
 			}
 		}
@@ -154,9 +182,13 @@ public class DisplayPanel extends JPanel
 	{
 		this.wallColor = wallColor;
 	}
-	public void setPlayerColor(Color playerColor)
+	public void setPlayer1Color(Color player1Color)
 	{
-		this.playerColor = playerColor;
+		this.player1Color = player1Color;
+	}
+	public void setPlayer2Color(Color player2Color)
+	{
+		this.player2Color = player2Color;
 	}
 	public void setProjectileColor(Color projectileColor)
 	{
