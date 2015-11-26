@@ -3,6 +3,7 @@ package frames.panels;
 import maps.Stage;
 import maps.By;
 import players.Player;
+import players.Move;
 import projectiles.Projectile;
 
 import java.awt.*;
@@ -49,7 +50,7 @@ public class DisplayPanel extends JPanel
 		// Create Timer for animations
 		// (Time between next call (ms), action to be called)
 		// 15ms yields 60 fps
-		new Timer(30, paintTimer).start();
+		new Timer(20, paintTimer).start();
 	}
 
 	Action paintTimer = new AbstractAction()
@@ -64,13 +65,31 @@ public class DisplayPanel extends JPanel
 					temp.move();
 				}
 			}
+			if(!player.releasedR)
+			{
+				player.move(Move.RIGHT);
+			}
+			if(!player.releasedL)
+			{
+				player.move(Move.LEFT);
+			}
+			if(!player.releasedD)
+			{
+				player.move(Move.DOWN);
+			}
+			if(!player.releasedU)
+			{
+				player.move(Move.UP);
+			}
 			repaint();
 		}
 	};
 
 	public void addProjectile()
 	{
-		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 5, 3, stage);
+		// (xStart, yStart, facing, speed, hitboxLength, stage)
+		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 5, 10, stage);
+		
 		projectiles.add(temp);
 		System.out.println(projectiles.size());
 		System.out.println(temp.xPos + " " + temp.yPos);
@@ -104,6 +123,10 @@ public class DisplayPanel extends JPanel
 				else if(stage.tile[j][k].occupied == By.PROJECTILE)
 				{
 					drawDot(j, k, projectileColor);
+				}
+				else if(stage.tile[j][k].occupied == By.DEBRIS)
+				{
+					drawDot(j, k, Color.RED);
 				}
 			}
 		}

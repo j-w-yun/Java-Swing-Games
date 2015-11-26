@@ -24,7 +24,7 @@ public class MainFrame extends JFrame implements KeyListener
 		// Set stage size (x, y)
 		stage = new Stage(1200, 800);
 
-        // Set player and connect it to stage (starting position x, y, speed, hitboxLength, Stage stage)
+        // (xStart, yStart, speed, hitboxLength, stage)
 		player = new Player(200, 200, 10, 15, stage);
 		
 		// Prepare stage display panel
@@ -76,21 +76,25 @@ public class MainFrame extends JFrame implements KeyListener
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
         	System.out.println("Right key pressed");
+            player.releasedR = false;
             player.move(Move.RIGHT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
         	System.out.println("Left key pressed");
+            player.releasedL = false;
             player.move(Move.LEFT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
         	System.out.println("Up key pressed");
+            player.releasedU = false;
             player.move(Move.UP);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         	System.out.println("DOWN key pressed");
+            player.releasedD = false;
             player.move(Move.DOWN);
             dp.repaint();
         }
@@ -105,19 +109,19 @@ public class MainFrame extends JFrame implements KeyListener
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             System.out.println("Right key released");
-            // Do nothing
+            player.releasedR = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             System.out.println("Left key released");
-            // Do nothing
+            player.releasedL = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             System.out.println("Up key released");
-            // Do nothing
+            player.releasedU = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             System.out.println("Down key released");
-            // Do nothing
+            player.releasedD = true;
         }
     }
 }

@@ -66,7 +66,9 @@ public class Projectile
 	public void generateHitbox()
 	{
 		radius = hitboxLength / 2;
-		stage.tile[xPos][yPos].occupied = By.PROJECTILE;
+
+		// Create tail
+		stage.tile[xPos][yPos].occupied = By.DEBRIS;
 
 		// Erase previous box
 		for(int j = xPosBefore - radius; j < xPosBefore + radius; j++)
@@ -106,7 +108,7 @@ public class Projectile
 	{
 		if(facing == Move.RIGHT)
 		{
-			for(int j = xPos + radius; j < xPos + radius + speed; j++)
+			for(int j = xPos + radius; j < xPos + radius + speed + 2; j++)
 			{
 				if(stage.tile[j][yPos].occupied == By.WALL)
 				{
@@ -148,7 +150,7 @@ public class Projectile
 		}
 		else if(facing == Move.DOWN)
 		{
-			for(int k = yPos + radius; k < yPos + radius + speed; k++)
+			for(int k = yPos + radius; k < yPos + radius + speed + 2; k++)
 			{
 				if(stage.tile[xPos][k].occupied == By.WALL)
 				{

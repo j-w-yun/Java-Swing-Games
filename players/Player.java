@@ -25,6 +25,11 @@ public class Player
 	// Store which way player is facing
 	private Move facing;
 
+	public boolean releasedR = false;
+	public boolean releasedL = false;
+	public boolean releasedU = false;
+	public boolean releasedD = false;
+
 	// Starting position (x, y)
 	public Player(int xStart, int yStart, int speed, int hitboxLength, Stage stage)
 	{
@@ -96,7 +101,7 @@ public class Player
 	{
 		if(move == Move.RIGHT)
 		{
-			for(int j = xPos + radius; j < xPos + radius + speed; j++)
+			for(int j = xPos + radius; j < xPos + radius + speed + 2; j++)
 			{
 				if(stage.tile[j][yPos].occupied == By.WALL)
 				{
@@ -109,7 +114,7 @@ public class Player
 
 			generateHitbox();		// Fill in tiles
 		}
-		else if(move == Move.LEFT)
+		if(move == Move.LEFT)
 		{
 			for(int j = xPos - radius - speed; j < xPos - radius; j++)
 			{
@@ -124,7 +129,7 @@ public class Player
 			
 			generateHitbox();
 		}
-		else if(move == Move.UP)
+		if(move == Move.UP)
 		{
 			for(int k = yPos - radius - speed; k < yPos - radius; k++)
 			{
@@ -139,9 +144,9 @@ public class Player
 
 			generateHitbox();
 		}
-		else if(move == Move.DOWN)
+		if(move == Move.DOWN)
 		{
-			for(int k = yPos + radius; k < yPos + radius + speed; k++)
+			for(int k = yPos + radius; k < yPos + radius + speed + 2; k++)
 			{
 				if(stage.tile[xPos][k].occupied == By.WALL)
 				{

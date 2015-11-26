@@ -1,3 +1,3 @@
 package maps;
 
-public enum By {FLOOR, WALL, PLAYER, PROJECTILE}
+public enum By {FLOOR, WALL, PLAYER, PROJECTILE, DEBRIS}
