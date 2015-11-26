@@ -33,10 +33,21 @@ public class MainFrame extends JFrame implements KeyListener
 
 		// Make some walls
 		// Draws a wall from a line b/w two points (x1, y1, x2, y2)
+        // Has to be a rectangle!
 		stage.makeWall(100, 100, 1100, 100);
 		stage.makeWall(1100, 100, 1100, 700);
 		stage.makeWall(1100, 700, 100, 700);
 		stage.makeWall(100, 700, 100, 100);
+
+        stage.makeWall(400, 400, 400, 600);
+        stage.makeWall(400, 600, 600, 600);
+        stage.makeWall(600, 600, 600, 400);
+        stage.makeWall(600, 400, 400, 400);
+
+        stage.makeWall(800, 150, 850, 150);
+        stage.makeWall(850, 150, 850, 200);
+        stage.makeWall(850, 200, 800, 200);
+        stage.makeWall(800, 200, 800, 150);
 
 		// Add keyboard listener
 		addKeyListener(this);

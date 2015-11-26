@@ -26,7 +26,7 @@ public class Projectile
 	private Move facing;
 
 	// Tail Length
-	private int tailLength = 15;
+	private int tailLength = 10;
 	private int[][] tail = new int[tailLength][2];
 	private int iterator = 0;
 	private boolean deleteTail = false;
@@ -134,7 +134,10 @@ public class Projectile
 
 	public void fill(int x, int y, By what)
 	{
-		stage.tile[x][y].occupied = what;
+		if(stage.tile[x][y].occupied != By.WALL)
+		{
+			stage.tile[x][y].occupied = what;		
+		}
 	}
 
 	public void move()

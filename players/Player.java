@@ -84,7 +84,10 @@ public class Player
 	}
 	public void fill(int x, int y, By what)
 	{
-		stage.tile[x][y].occupied = what;
+		if(stage.tile[x][y].occupied != By.WALL)
+		{
+			stage.tile[x][y].occupied = what;
+		}
 	}
 
 	public int[] getPos()
@@ -102,7 +105,7 @@ public class Player
 	{
 		if(move == Move.RIGHT)
 		{
-			for(int j = xPos + radius; j < xPos + radius + speed + 2; j++)
+			for(int j = xPos + radius - 5; j < xPos + radius + speed + 5; j++)
 			{
 				if(stage.tile[j][yPos].occupied == By.WALL)
 				{
@@ -117,7 +120,7 @@ public class Player
 		}
 		if(move == Move.LEFT)
 		{
-			for(int j = xPos - radius - speed; j < xPos - radius; j++)
+			for(int j = xPos - radius - speed - 5; j < xPos - radius + 5; j++)
 			{
 				if(stage.tile[j][yPos].occupied == By.WALL)
 				{
@@ -132,7 +135,7 @@ public class Player
 		}
 		if(move == Move.UP)
 		{
-			for(int k = yPos - radius - speed; k < yPos - radius; k++)
+			for(int k = yPos - radius - speed - 5; k < yPos - radius + 5; k++)
 			{
 				if(stage.tile[xPos][k].occupied == By.WALL)
 				{
@@ -147,7 +150,7 @@ public class Player
 		}
 		if(move == Move.DOWN)
 		{
-			for(int k = yPos + radius; k < yPos + radius + speed + 2; k++)
+			for(int k = yPos + radius - 5; k < yPos + radius + speed + 5; k++)
 			{
 				if(stage.tile[xPos][k].occupied == By.WALL)
 				{
