@@ -34,6 +34,9 @@ public class Projectile
 	// Delete projectile
 	private boolean deleteProjectile = false;
 
+	// Distance traveled
+	private int distance = 0;
+
 	public Projectile(int xStart, int yStart, Move facing, int speed, int hitboxLength, Stage stage)
 	{
 		this.stage = stage;
@@ -197,17 +200,18 @@ public class Projectile
 					facing = Move.LEFT;
 					return;
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER1)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 5)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER2)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 5)
 				{
 					stage.winner = "BLUE wins!";
 				}
 			}	
 
-			xPos += speed;			// Move player
+			xPos += speed;			// Move projectile
+			distance += speed;		// Distance traveled by projectile
 
 			for(int j = xPos - hitboxLength + speed; j < xPos + hitboxLength; j++)
 			{
@@ -231,17 +235,18 @@ public class Projectile
 					facing = Move.RIGHT;
 					return;
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER1)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 5)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER2)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 5)
 				{
 					stage.winner = "BLUE wins!";
 				}
 			}
 
 			xPos -= speed;
+			distance += speed;
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength - speed; j++)
 			{
@@ -265,17 +270,18 @@ public class Projectile
 					facing = Move.DOWN;
 					return;
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER1)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 5)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER2)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5)
 				{
 					stage.winner = "BLUE wins!";
 				}
 			}
 
 			yPos -= speed;
+			distance += speed;
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
@@ -299,17 +305,18 @@ public class Projectile
 					facing = Move.UP;
 					return;
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER1)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 5)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER2)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5)
 				{
 					stage.winner = "BLUE wins!";
 				}
 			}
 
 			yPos += speed;
+			distance += speed;
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{

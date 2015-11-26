@@ -42,6 +42,7 @@ public class Stage
 		{
 			System.out.println("Invalid input: makeWall()");
 			System.out.println("Only 90 deg lines accepted. Fuck yo slopes");
+			System.exit(0);
 		}
 
 		// Make dots for-loop-compatible

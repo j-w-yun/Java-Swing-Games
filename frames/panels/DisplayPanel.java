@@ -69,35 +69,38 @@ public class DisplayPanel extends JPanel
 			}
 
 			// Smooth movement
+			// Player 1 movement
 			if(!player1.releasedR)
 			{
 				player1.move(Move.RIGHT);
 			}
-			if(!player1.releasedL)
+			else if(!player1.releasedL)
 			{
 				player1.move(Move.LEFT);
 			}
-			if(!player1.releasedD)
+			else if(!player1.releasedD)
 			{
 				player1.move(Move.DOWN);
 			}
-			if(!player1.releasedU)
+			else if(!player1.releasedU)
 			{
 				player1.move(Move.UP);
 			}
+
+			// Player 2 movement
 			if(!player2.releasedR)
 			{
 				player2.move(Move.RIGHT);
 			}
-			if(!player2.releasedL)
+			else if(!player2.releasedL)
 			{
 				player2.move(Move.LEFT);
 			}
-			if(!player2.releasedD)
+			else if(!player2.releasedD)
 			{
 				player2.move(Move.DOWN);
 			}
-			if(!player2.releasedU)
+			else if(!player2.releasedU)
 			{
 				player2.move(Move.UP);
 			}
