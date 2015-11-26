@@ -25,7 +25,7 @@ public class MainFrame extends JFrame implements KeyListener
 		stage = new Stage(1200, 800);
 
         // Set player and connect it to stage (starting position x, y, speed, hitboxLength, Stage stage)
-		player = new Player(200, 200, 10, 10, stage);
+		player = new Player(200, 200, 10, 15, stage);
 		
 		// Prepare stage display panel
         // Add stage and player
@@ -92,6 +92,11 @@ public class MainFrame extends JFrame implements KeyListener
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         	System.out.println("DOWN key pressed");
             player.move(Move.DOWN);
+            dp.repaint();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            System.out.println("SPACE key pressed");
+            dp.addProjectile();
             dp.repaint();
         }
     }

@@ -3,23 +3,24 @@ package frames.panels;
 import maps.Stage;
 import maps.By;
 import players.Player;
+import projectiles.Projectile;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class DisplayPanel extends JPanel
 {
-	// Timer based animation
-	// Timer timer;
-	// ActionListener update;
-
 	// For drawing pixels
 	private Graphics g;
 
 	// Get in constructor
 	private Stage stage;
 	private Player player;
+
+	// Projectiles
+	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
 	// Default wall color is Color.CYAN
 	// Change by calling setWallColor();
@@ -31,7 +32,7 @@ public class DisplayPanel extends JPanel
 
 	// Default projectile color is Color.YELLOW
 	// Change by calling setProjectileColor();
-	private Color projectileColor = Color.YELLOW;
+	private Color projectileColor = Color.CYAN;
 
 	public DisplayPanel(Stage stage, Player player)
 	{
@@ -44,6 +45,36 @@ public class DisplayPanel extends JPanel
 
 		// Set panel size new Dimension(x, y)
 		setPreferredSize(new Dimension(stage.tile.length, stage.tile[0].length));
+
+		// Create Timer for animations
+		// (Time between next call (ms), action to be called)
+		// 15ms yields 60 fps
+		new Timer(30, paintTimer).start();
+	}
+
+	Action paintTimer = new AbstractAction()
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			if(projectiles != null)
+			{
+				for(int j = 0; j < projectiles.size(); j++)
+				{
+					Projectile temp = (Projectile) projectiles.get(j);
+					temp.move();
+				}
+			}
+			repaint();
+		}
+	};
+
+	public void addProjectile()
+	{
+		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 5, 3, stage);
+		projectiles.add(temp);
+		System.out.println(projectiles.size());
+		System.out.println(temp.xPos + " " + temp.yPos);
+		System.out.println(stage.tile[temp.xPos][temp.yPos].occupied);
 	}
 
 	@Override
