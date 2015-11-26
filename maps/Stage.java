@@ -3,6 +3,7 @@ package maps;
 public class Stage
 {
 	public Tile[][] tile;
+	public String winner;
 
 	// Copy access
 	public Tile[][] getTileCopy()

@@ -80,9 +80,51 @@ public class Player
 		}
 		for(int k = yPos - radius; k < yPos + radius; k++)
 		{
-			fill(xPos + radius, k, player);
 			fill(xPos - radius, k, player);
+			fill(xPos + radius, k, player);
 		}
+
+		if(facing == Move.RIGHT)
+		{
+			for(int k = yPos - radius; k < yPos + radius; k++)
+			{
+				if(stage.tile[xPos - radius][k].occupied != By.WALL)
+				{
+					fill(xPos + radius, k, By.FLOOR);
+				}
+			}
+		}
+		else if(facing == Move.LEFT)
+		{
+			for(int k = yPos - radius; k < yPos + radius; k++)
+			{
+				if(stage.tile[xPos - radius][k].occupied != By.WALL)
+				{
+					fill(xPos - radius, k, By.FLOOR);
+				}
+			}
+		}
+		else if(facing == Move.UP)
+		{
+			for(int j = xPos - radius; j < xPos + radius; j++)
+			{
+				if(stage.tile[j][yPos - radius].occupied != By.WALL)
+				{
+					fill(j, yPos - radius, By.FLOOR);
+				}
+			}
+		}
+		else if(facing == Move.DOWN)
+		{
+			for(int j = xPos - radius; j < xPos + radius; j++)
+			{
+				if(stage.tile[j][yPos + radius].occupied != By.WALL)
+				{
+					fill(j, yPos + radius, By.FLOOR);					
+				}
+			}
+		}
+
 
 		xPosBefore = xPos;
 		yPosBefore = yPos;

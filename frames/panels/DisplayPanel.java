@@ -101,6 +101,13 @@ public class DisplayPanel extends JPanel
 			{
 				player2.move(Move.UP);
 			}
+
+			if(stage.winner != null)
+			{
+				System.out.println(stage.winner);
+				System.exit(0);
+			}
+
 			repaint();
 		}
 	};
