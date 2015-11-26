@@ -54,19 +54,15 @@ public class MainFrame extends JFrame implements KeyListener
     public void keyTyped(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right key typed");
             // Do nothing
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Left key typed");
             // Do nothing
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            System.out.println("Up key typed");
             // Do nothing
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            System.out.println("Down key typed");
             // Do nothing
         }
     }
@@ -75,31 +71,27 @@ public class MainFrame extends JFrame implements KeyListener
     public void keyPressed(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-        	System.out.println("Right key pressed");
             player.releasedR = false;
             player.move(Move.RIGHT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-        	System.out.println("Left key pressed");
             player.releasedL = false;
             player.move(Move.LEFT);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-        	System.out.println("Up key pressed");
             player.releasedU = false;
             player.move(Move.UP);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-        	System.out.println("DOWN key pressed");
             player.releasedD = false;
             player.move(Move.DOWN);
             dp.repaint();
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            System.out.println("SPACE key pressed");
+            dp.releasedS = false;
             dp.addProjectile();
             dp.repaint();
         }
@@ -108,20 +100,19 @@ public class MainFrame extends JFrame implements KeyListener
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            System.out.println("Right key released");
             player.releasedR = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            System.out.println("Left key released");
             player.releasedL = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            System.out.println("Up key released");
             player.releasedU = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            System.out.println("Down key released");
             player.releasedD = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            dp.releasedS = true;
         }
     }
 }

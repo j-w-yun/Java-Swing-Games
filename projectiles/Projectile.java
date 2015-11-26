@@ -4,6 +4,8 @@ import maps.Stage;
 import maps.By;
 import players.Move;
 
+import java.util.ArrayList;
+
 public class Projectile
 {
 	// To be used to set tiles which the projectile is currently on
@@ -22,6 +24,12 @@ public class Projectile
 
 	// Store which way projectile is facing
 	private Move facing;
+
+	// Tail Length
+	private int tailLength = 15;
+	private int[][] tail = new int[tailLength][2];
+	private int iterator = 0;
+	private boolean deleteTail = false;
 
 	public Projectile(int xStart, int yStart, Move facing, int speed, int hitboxLength, Stage stage)
 	{
@@ -59,28 +67,53 @@ public class Projectile
 		xPosBefore = xPos;
 		yPosBefore = yPos;
 
-		System.out.println(xPos + " " + yPos);
-
 		generateHitbox();
 	}
 	public void generateHitbox()
 	{
 		radius = hitboxLength / 2;
 
+		// Delete tail if iterator exceeds tailLength
+		if(iterator > tailLength - 1)
+		{	
+			//Permanently true from now on
+			deleteTail = true;
+			iterator = 0;
+		}
+
+		if(deleteTail)
+		{
+			stage.tile[tail[iterator][0]][tail[iterator][1]].occupied = By.FLOOR;
+		}
+
 		// Create tail
 		stage.tile[xPos][yPos].occupied = By.DEBRIS;
+		tail[iterator][0] = xPos;
+		tail[iterator][1] = yPos;
+		iterator++;
 
 		// Erase previous box
 		for(int j = xPosBefore - radius; j < xPosBefore + radius; j++)
 		{
-			System.out.println(j + " " + (yPosBefore + radius));
-			fill(j, yPosBefore + radius, By.FLOOR);
-			fill(j, yPosBefore - radius, By.FLOOR);
+			if(stage.tile[j][yPosBefore + radius].occupied != By.DEBRIS)
+			{
+				fill(j, yPosBefore + radius, By.FLOOR);			
+			}
+			if(stage.tile[j][yPosBefore - radius].occupied != By.DEBRIS)
+			{
+				fill(j, yPosBefore - radius, By.FLOOR);			
+			}
 		}
 		for(int k = yPosBefore - radius; k < yPosBefore + radius; k++)
 		{
-			fill(xPosBefore + radius, k, By.FLOOR);
-			fill(xPosBefore - radius, k, By.FLOOR);
+			if(stage.tile[xPosBefore + radius][k].occupied != By.DEBRIS)
+			{
+				fill(xPosBefore + radius, k, By.FLOOR);			
+			}
+			if(stage.tile[xPosBefore - radius][k].occupied != By.DEBRIS)
+			{
+				fill(xPosBefore - radius, k, By.FLOOR);			
+			}
 		}
 
 		// Make new box

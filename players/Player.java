@@ -25,6 +25,7 @@ public class Player
 	// Store which way player is facing
 	private Move facing;
 
+	// For holding down directional buttons
 	public boolean releasedR = true;
 	public boolean releasedL = true;
 	public boolean releasedU = true;

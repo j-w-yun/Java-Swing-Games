@@ -35,6 +35,9 @@ public class DisplayPanel extends JPanel
 	// Change by calling setProjectileColor();
 	private Color projectileColor = Color.CYAN;
 
+	// For holding down space bar
+	public boolean releasedS = true;
+
 	public DisplayPanel(Stage stage, Player player)
 	{
 		// Set background to black
@@ -65,6 +68,8 @@ public class DisplayPanel extends JPanel
 					temp.move();
 				}
 			}
+
+			// Smooth movement
 			if(!player.releasedR)
 			{
 				player.move(Move.RIGHT);
@@ -81,6 +86,13 @@ public class DisplayPanel extends JPanel
 			{
 				player.move(Move.UP);
 			}
+
+			// Smooth firing
+			// Too rapid?
+			if(!releasedS)
+			{
+				addProjectile();
+			}
 			repaint();
 		}
 	};
@@ -88,12 +100,8 @@ public class DisplayPanel extends JPanel
 	public void addProjectile()
 	{
 		// (xStart, yStart, facing, speed, hitboxLength, stage)
-		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 3, 7, stage);
-		
+		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 3, 5, stage);
 		projectiles.add(temp);
-		System.out.println(projectiles.size());
-		System.out.println(temp.xPos + " " + temp.yPos);
-		System.out.println(stage.tile[temp.xPos][temp.yPos].occupied);
 	}
 
 	@Override
@@ -105,9 +113,7 @@ public class DisplayPanel extends JPanel
 		// To be used in other methods to fill a pixel
 		this.g = g;
 
-		// DEBUG
-		//drawDot(player.getPos()[0], player.getPos()[1], playerColor);
-
+		// Determine colors
 		for(int j = 0; j < stage.tile.length; j++)
 		{
 			for(int k = 0; k < stage.tile[0].length; k++)
@@ -126,7 +132,7 @@ public class DisplayPanel extends JPanel
 				}
 				else if(stage.tile[j][k].occupied == By.DEBRIS)
 				{
-					drawDot(j, k, Color.RED);
+					drawDot(j, k, projectileColor);
 				}
 			}
 		}
@@ -143,7 +149,7 @@ public class DisplayPanel extends JPanel
 		// g.drawLine(x, y, x, y);
 	}
 
-	// Set Color wallColor
+	// Mutators
 	public void setWallColor(Color wallColor)
 	{
 		this.wallColor = wallColor;
