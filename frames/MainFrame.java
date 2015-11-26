@@ -27,8 +27,8 @@ public class MainFrame extends JFrame implements KeyListener
 		stage = new Stage(1200, 800);
 
         // (xStart, yStart, speed, hitboxLength, stage)
-		player1 = new Player(200, 200, 5, 10, stage, By.PLAYER1);
-        player2 = new Player(1000, 600, 5, 10, stage, By.PLAYER2);
+		player1 = new Player(200, 200, 2, 10, stage, By.PLAYER1);
+        player2 = new Player(1000, 600, 2, 10, stage, By.PLAYER2);
 		
 		// Prepare stage display panel
         // Add stage and player1

@@ -255,7 +255,7 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos - hitboxLength; k < yPos + hitboxLength - speed; k++)
+				for(int k = yPos - hitboxLength - speed; k < yPos; k++)
 				{
 					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
@@ -281,7 +281,7 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos - hitboxLength + speed; k < yPos + hitboxLength; k++)
+				for(int k = yPos; k < yPos + hitboxLength + speed; k++)
 				{
 					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
