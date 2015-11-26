@@ -25,10 +25,10 @@ public class Player
 	// Store which way player is facing
 	private Move facing;
 
-	public boolean releasedR = false;
-	public boolean releasedL = false;
-	public boolean releasedU = false;
-	public boolean releasedD = false;
+	public boolean releasedR = true;
+	public boolean releasedL = true;
+	public boolean releasedU = true;
+	public boolean releasedD = true;
 
 	// Starting position (x, y)
 	public Player(int xStart, int yStart, int speed, int hitboxLength, Stage stage)
