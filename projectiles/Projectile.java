@@ -190,7 +190,7 @@ public class Projectile
 		// Movement of projectiles
 		if(facing == Move.RIGHT)
 		{
-			for(int j = xPos + radius; j < xPos + radius + speed + 2; j++)
+			for(int j = xPos + radius; j < xPos + radius + speed; j++)
 			{
 				if(stage.tile[j][yPos].occupied == By.WALL)
 				{
@@ -201,11 +201,14 @@ public class Projectile
 
 			xPos += speed;			// Move player
 
-			for(int j = xPos - radius; j < xPos + radius + speed; j++)
+			for(int j = xPos - hitboxLength - speed; j < xPos + hitboxLength + speed; j++)
 			{
-				if(stage.tile[j][yPos].occupied == By.PROJECTILE)
+				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
-					deleteProjectile = true;
+					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					{
+						deleteProjectile = true;
+					}
 				}
 			}
 
@@ -224,11 +227,14 @@ public class Projectile
 
 			xPos -= speed;
 
-			for(int j = xPos - radius - speed; j < xPos + radius; j++)
+			for(int j = xPos - hitboxLength - speed; j < xPos + hitboxLength + speed; j++)
 			{
-				if(stage.tile[j][yPos].occupied == By.PROJECTILE)
+				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
-					deleteProjectile = true;
+					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					{
+						deleteProjectile = true;
+					}
 				}
 			}
 
@@ -247,11 +253,14 @@ public class Projectile
 
 			yPos -= speed;
 
-			for(int k = yPos - radius - speed; k < yPos + radius; k++)
+			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+				for(int k = yPos - hitboxLength - speed; k < yPos; k++)
 				{
-					deleteProjectile = true;
+					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					{
+						deleteProjectile = true;
+					}
 				}
 			}
 			
@@ -259,7 +268,7 @@ public class Projectile
 		}
 		else if(facing == Move.DOWN)
 		{
-			for(int k = yPos + radius; k < yPos + radius + speed + 2; k++)
+			for(int k = yPos + radius; k < yPos + radius + speed; k++)
 			{
 				if(stage.tile[xPos][k].occupied == By.WALL)
 				{
@@ -267,13 +276,17 @@ public class Projectile
 					return;
 				}
 			}
+
 			yPos += speed;
 
-			for(int k = yPos - radius; k < yPos + radius + speed; k++)
+			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+				for(int k = yPos; k < yPos + hitboxLength + speed; k++)
 				{
-					deleteProjectile = true;
+					if(stage.tile[xPos][k].occupied == By.PROJECTILE)
+					{
+						deleteProjectile = true;
+					}
 				}
 			}
 			
