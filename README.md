@@ -1,5 +1,6 @@
 <h1>
   Main class: Tentative
+  <hr />
 </h1>
 
 <body>
@@ -45,7 +46,7 @@
   <br />
   
   DisplayPanel
-  <hr />
+  <br />
   
   <b>FPS</b>
   <br />
@@ -57,4 +58,5 @@
   <br />
   
   MainFrame and all its extensions
+  <hr />
 </body>
