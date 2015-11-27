@@ -5,17 +5,17 @@
 <body>
 <center>
   Controls:
-</ br>
+<br />
 </center>
   PLAYER1
-  </ br>
+  <br />
     Arrow Keys
-  </ br>
+  <br />
     Space Bar
   <p />  
   PLAYER2
-  </ br>
+  <br />
     W, A, S, D Keys
-  </ br>
+  <br />
     Shift Bar
 </body>
