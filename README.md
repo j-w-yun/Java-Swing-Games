@@ -6,7 +6,6 @@
   <center>
     <h3>Controls:</h3>
   </center>
-  <hr />
   
   <b>PLAYER1</b>
   <br />
@@ -26,4 +25,25 @@
   Shift Bar
   <hr />
   
+  <center>
+    <h3>Settings</h3>
+  </center>
+  
+  <b>PLAYER</b>
+  <br />
+  
+  DisplayPanel
+  <br />
+  
+  <b>PROJECTILE</b>
+  <br />
+  
+  MainFrame
+  <br />
+  
+  <b>COLOR SCHEME</b>
+  <br />
+  
+  DisplayPanel
+  <hr />
 </body>
