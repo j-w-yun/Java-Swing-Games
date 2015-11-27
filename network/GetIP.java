@@ -1,9 +1,11 @@
+package network;
+
 import java.net.*;
 import java.util.*;
 
-public class GetIP
+public class Get
 {
-	public static String GetIP()
+	public static String IP()
 	{
 		String save = null, ip;
 
