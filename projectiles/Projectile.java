@@ -309,7 +309,7 @@ public class Projectile
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5D)
 				{
 					stage.winner = "BLUE wins!";
 				}

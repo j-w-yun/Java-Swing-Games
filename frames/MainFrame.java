@@ -52,6 +52,21 @@ public class MainFrame extends JFrame implements KeyListener
         stage.makeWall(850, 200, 800, 200);
         stage.makeWall(800, 200, 800, 150);
 
+        stage.makeWall(900, 300, 1000, 300);
+        stage.makeWall(1000, 300, 1000, 400);
+        stage.makeWall(1000, 400, 900, 400);
+        stage.makeWall(900, 400, 900, 300);
+
+        stage.makeWall(750, 550, 800, 550);
+        stage.makeWall(800, 550, 800, 500);
+        stage.makeWall(800, 500, 750, 500);
+        stage.makeWall(750, 500, 750, 550);
+
+        stage.makeWall(230, 380, 280, 380);
+        stage.makeWall(280, 380, 280, 430);
+        stage.makeWall(280, 430, 230, 430);
+        stage.makeWall(230, 430, 230, 380);
+
 		// Add keyboard listener
 		addKeyListener(this);
 

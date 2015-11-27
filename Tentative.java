@@ -1,6 +1,4 @@
 import frames.MainFrame;
-import frames.panels.*;
-import maps.*;
 
 public class Tentative
 {
