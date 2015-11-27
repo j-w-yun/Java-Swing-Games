@@ -46,4 +46,15 @@
   
   DisplayPanel
   <hr />
+  
+  <b>FPS</b>
+  <br />
+  
+  MainFrame and all its extensions
+  <br />
+  
+  <b>WALLS</b>
+  <br />
+  
+  MainFrame and all its extensions
 </body>
