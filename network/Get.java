@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Get
 {
-	public static String IP()
+	public static String ip()
 	{
 		String save = null, ip;
 
@@ -33,7 +33,6 @@ public class Get
 	                }
 	            }
 	        }
-            System.out.println(save);
 	    }
 
 	    catch (SocketException e)

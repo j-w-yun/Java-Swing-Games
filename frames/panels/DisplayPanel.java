@@ -22,7 +22,7 @@ public class DisplayPanel extends JPanel
 	private Player player2;
 
 	// Projectiles
-	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+	public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
 	// Default wall color is Color.RED
 	// Change by calling setWallColor();
@@ -48,72 +48,7 @@ public class DisplayPanel extends JPanel
 
 		// Set panel size new Dimension(x, y)
 		setPreferredSize(new Dimension(stage.tile.length, stage.tile[0].length));
-
-		// Create Timer for animations
-		// (Time between next call (ms), action to be called)
-		// 15ms yields 60 fps
-		new Timer(15, paintTimer).start();
 	}
-
-	Action paintTimer = new AbstractAction()
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			if(projectiles != null)
-			{
-				for(int j = 0; j < projectiles.size(); j++)
-				{
-					Projectile temp = (Projectile) projectiles.get(j);
-					temp.move();
-				}
-			}
-
-			// Smooth movement
-			// Player 1 movement
-			if(!player1.releasedR)
-			{
-				player1.move(Move.RIGHT);
-			}
-			else if(!player1.releasedL)
-			{
-				player1.move(Move.LEFT);
-			}
-			else if(!player1.releasedD)
-			{
-				player1.move(Move.DOWN);
-			}
-			else if(!player1.releasedU)
-			{
-				player1.move(Move.UP);
-			}
-
-			// Player 2 movement
-			if(!player2.releasedR)
-			{
-				player2.move(Move.RIGHT);
-			}
-			else if(!player2.releasedL)
-			{
-				player2.move(Move.LEFT);
-			}
-			else if(!player2.releasedD)
-			{
-				player2.move(Move.DOWN);
-			}
-			else if(!player2.releasedU)
-			{
-				player2.move(Move.UP);
-			}
-
-			if(stage.winner != null)
-			{
-				System.out.println(stage.winner);
-				System.exit(0);
-			}
-
-			repaint();
-		}
-	};
 
 	public void addProjectile(Player player)
 	{

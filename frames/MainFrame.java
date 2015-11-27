@@ -1,14 +1,16 @@
 package frames;
 
 import frames.panels.DisplayPanel;
+import frames.panels.ButtonPanel;
 import maps.Stage;
 import maps.By;
 import players.Player;
 import players.Move;
+import projectiles.Projectile;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.awt.event.KeyListener;
 
 public class MainFrame extends JFrame implements KeyListener
@@ -18,6 +20,7 @@ public class MainFrame extends JFrame implements KeyListener
 	private Player player1;
     private Player player2;
 
+    // Constructor
 	public MainFrame(String title)
 	{
 		// Set title
@@ -76,8 +79,76 @@ public class MainFrame extends JFrame implements KeyListener
 		// Standard procedure of JFrame
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // Create Timer for animations
+        // (Time between next call (ms), action to be called)
+        // 15ms yields 60 fps
+        new Timer(15, paintTimer).start();
+
 		setVisible(true);
 	}
+
+    // Timer associated
+    Action paintTimer = new AbstractAction()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            if(dp.projectiles != null)
+            {
+                for(int j = 0; j < dp.projectiles.size(); j++)
+                {
+                    Projectile temp = (Projectile) dp.projectiles.get(j);
+                    temp.move();
+                }
+            }
+
+            // Smooth movement
+            // Player 1 movement
+            if(!player1.releasedR)
+            {
+                player1.move(Move.RIGHT);
+            }
+            else if(!player1.releasedL)
+            {
+                player1.move(Move.LEFT);
+            }
+            else if(!player1.releasedD)
+            {
+                player1.move(Move.DOWN);
+            }
+            else if(!player1.releasedU)
+            {
+                player1.move(Move.UP);
+            }
+
+            // Player 2 movement
+            if(!player2.releasedR)
+            {
+                player2.move(Move.RIGHT);
+            }
+            else if(!player2.releasedL)
+            {
+                player2.move(Move.LEFT);
+            }
+            else if(!player2.releasedD)
+            {
+                player2.move(Move.DOWN);
+            }
+            else if(!player2.releasedU)
+            {
+                player2.move(Move.UP);
+            }
+
+            if(stage.winner != null)
+            {
+                System.out.println(stage.winner);
+                System.exit(0);
+            }
+
+            dp.repaint();
+        }
+    };
+
 
 	@Override
     public void keyTyped(KeyEvent e)
