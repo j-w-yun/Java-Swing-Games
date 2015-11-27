@@ -1,10 +1,10 @@
 <h1>
   Main class: Tentative
-  <hr />
 </h1>
 
 <body>
   <center>
+  <hr />
     <h3>Controls:</h3>
   </center>
   
