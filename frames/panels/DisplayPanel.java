@@ -29,8 +29,8 @@ public class DisplayPanel extends JPanel
 	private Color wallColor = Color.CYAN;
 
 	// Change by calling setPlayer#Color();
-	private Color player1Color = Color.BLUE;
-	private Color player2Color = Color.RED;
+	private Color player1Color = new Color(0x24, 0x7a, 0xfd);
+	private Color player2Color = new Color(0xfe, 0x2f, 0x4a);
 
 	// Default projectile color is Color.CYAN
 	// Change by calling setProjectileColor();
@@ -151,11 +151,11 @@ public class DisplayPanel extends JPanel
 				}
 				else if(stage.tile[j][k].occupied == By.PROJECTILE)
 				{
-					drawDot(j, k, projectileColor);
+					drawDot(j, k, new Color(0xb7, 0xff, 0xfa));
 				}
 				else if(stage.tile[j][k].occupied == By.DEBRIS)
 				{
-					drawDot(j, k, Color.BLUE);
+					drawDot(j, k, new Color(0x66, 0xcc, 0xff));
 				}
 			}
 		}
