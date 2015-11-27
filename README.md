@@ -3,19 +3,27 @@
 </h1>
 
 <body>
-<center>
-  Controls:
-<p />
-</center>
-  PLAYER1
+  <center>
+    <h3>Controls:</h3>
+  </center>
+  <hr />
+  
+  <b>PLAYER1</b>
   <br />
-    Arrow Keys
+  
+  Arrow Keys
   <br />
-    Space Bar
+  
+  Space Bar
   <p />  
-  PLAYER2
+  
+  <b>PLAYER2</b>
   <br />
-    W, A, S, D Keys
+  
+  W, A, S, D Keys
   <br />
-    Shift Bar
+  
+  Shift Bar
+  <hr />
+  
 </body>
