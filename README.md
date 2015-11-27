@@ -5,7 +5,7 @@
 <body>
 <center>
   Controls:
-<br />
+<p />
 </center>
   PLAYER1
   <br />
