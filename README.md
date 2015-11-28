@@ -1,6 +1,6 @@
-<h1>
+<h2>
   Main class: Prototype
-</h1>
+</h2>
 
 <body>
   <center>
