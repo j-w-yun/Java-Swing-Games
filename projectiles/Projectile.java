@@ -213,7 +213,7 @@ public class Projectile
 			xPos += speed;			// Move projectile
 			distance += speed;		// Distance traveled by projectile
 
-			for(int j = xPos - hitboxLength + speed; j < xPos + hitboxLength; j++)
+			for(int j = xPos; j < xPos + speed + 5; j++)
 			{
 				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
@@ -248,7 +248,7 @@ public class Projectile
 			xPos -= speed;
 			distance += speed;
 
-			for(int j = xPos - hitboxLength; j < xPos + hitboxLength - speed; j++)
+			for(int j = xPos - speed - 5; j < xPos; j++)
 			{
 				for(int k = yPos - hitboxLength; k < yPos + hitboxLength; k++)
 				{
@@ -285,7 +285,7 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos - hitboxLength - speed; k < yPos; k++)
+				for(int k = yPos - speed - 5; k < yPos; k++)
 				{
 					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
@@ -320,7 +320,7 @@ public class Projectile
 
 			for(int j = xPos - hitboxLength; j < xPos + hitboxLength; j++)
 			{
-				for(int k = yPos; k < yPos + hitboxLength + speed; k++)
+				for(int k = yPos; k < yPos + speed + 5; k++)
 				{
 					if(stage.tile[j][k].occupied == By.PROJECTILE)
 					{
