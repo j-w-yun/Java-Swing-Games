@@ -39,12 +39,12 @@ public class Server
 			System.out.println("Connected to client.");
 			start = true;
 
-			// while(true)
-			// {
-			// 	String temp = input.readLine();
-			// 	output.println(temp);
-			// 	System.out.println(temp);
-			// }
+			while(true)
+			{
+				// String temp = input.readLine();
+				// output.println(temp);
+				// System.out.println(temp);
+			}
 		}
 		catch(IOException e)
 		{

@@ -200,11 +200,11 @@ public class Projectile
 					facing = Move.LEFT;
 					return;
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 5)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 10)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 5)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 10)
 				{
 					stage.winner = "BLUE wins!";
 				}
@@ -235,11 +235,11 @@ public class Projectile
 					facing = Move.RIGHT;
 					return;
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 5)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER1 && distance > 10)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 5)
+				else if(stage.tile[j][yPos].occupied == By.PLAYER2 && distance > 10)
 				{
 					stage.winner = "BLUE wins!";
 				}
@@ -270,11 +270,11 @@ public class Projectile
 					facing = Move.DOWN;
 					return;
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 5)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 10)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 10)
 				{
 					stage.winner = "BLUE wins!";
 				}
@@ -305,11 +305,11 @@ public class Projectile
 					facing = Move.UP;
 					return;
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 5)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER1 && distance > 10)
 				{
 					stage.winner = "RED wins!";
 				}
-				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 5D)
+				else if(stage.tile[xPos][k].occupied == By.PLAYER2 && distance > 10)
 				{
 					stage.winner = "BLUE wins!";
 				}

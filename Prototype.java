@@ -1,9 +1,9 @@
 import frames.MenuFrame;
 
-public class Tentative
+public class Prototype
 {
 	public static void main(String[] args)
 	{
-		new MenuFrame("Tentative");
+		new MenuFrame("Prototype");
 	}
 }

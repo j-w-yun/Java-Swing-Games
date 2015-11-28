@@ -30,6 +30,7 @@ public class MainFrame extends JFrame implements KeyListener
 		stage = new Stage(1200, 800);
 
         // (xStart, yStart, speed, hitboxLength, stage)
+        // DEFAULT: (200, 200, 2, 10, stage, By.PLAYER#);
 		player1 = new Player(200, 200, 2, 10, stage, By.PLAYER1);
         player2 = new Player(1000, 600, 2, 10, stage, By.PLAYER2);
 		
@@ -83,7 +84,7 @@ public class MainFrame extends JFrame implements KeyListener
         // Create Timer for animations
         // (Time between next call (ms), action to be called)
         // 15ms yields 60 fps
-        new Timer(15, paintTimer).start();
+        new Timer(10, paintTimer).start();
 
 		setVisible(true);
 	}

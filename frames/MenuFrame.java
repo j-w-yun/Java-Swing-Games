@@ -10,7 +10,9 @@ public class MenuFrame extends JFrame
 	private ButtonPanel bp;
 	public MenuFrame(String title)
 	{
-		bp = new ButtonPanel();
+		super("Prototype");
+
+		bp = new ButtonPanel(this);
 
 		add(bp);
 

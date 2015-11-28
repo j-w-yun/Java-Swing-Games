@@ -1,5 +1,5 @@
 <h1>
-  Main class: Tentative
+  Main class: Prototype
 </h1>
 
 <body>

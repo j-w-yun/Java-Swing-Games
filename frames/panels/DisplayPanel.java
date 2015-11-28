@@ -53,7 +53,8 @@ public class DisplayPanel extends JPanel
 	public void addProjectile(Player player)
 	{
 		// (xStart, yStart, facing, speed, hitboxLength, stage)
-		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 5, 5, stage);
+		// DEFAULT: (player.getPos()[0], player.getPos()[1], player.getFace(), 5, 5, stage)
+		Projectile temp = new Projectile(player.getPos()[0], player.getPos()[1], player.getFace(), 4, 4, stage);
 		projectiles.add(temp);
 	}
 
