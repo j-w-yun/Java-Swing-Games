@@ -15,28 +15,30 @@ import java.awt.event.KeyListener;
 
 public class MainFrame extends JFrame implements KeyListener
 {
-	private DisplayPanel dp;
-	private Stage stage;
-	private Player player1;
+    private String title;
+    private DisplayPanel dp;
+    private Stage stage;
+    private Player player1;
     private Player player2;
 
     // Constructor
-	public MainFrame(String title)
-	{
+    public MainFrame(String title)
+    {
 		// Set title
 		super(title);
+        this.title = title;
 
 		// Set stage size (x, y)
 		stage = new Stage(1200, 800);
 
         // (xStart, yStart, speed, hitboxLength, stage)
         // DEFAULT: (200, 200, 2, 10, stage, By.PLAYER#);
-		player1 = new Player(200, 200, 2, 10, stage, By.PLAYER1);
+        player1 = new Player(200, 200, 2, 10, stage, By.PLAYER1);
         player2 = new Player(1000, 600, 2, 10, stage, By.PLAYER2);
 		
 		// Prepare stage display panel
         // Add stage and player1
-		dp = new DisplayPanel(stage, player1, player2);
+        dp = new DisplayPanel(stage, player1, player2);
 
 		// Make some walls
 		// Draws a wall from a line b/w two points (x1, y1, x2, y2)
@@ -143,7 +145,8 @@ public class MainFrame extends JFrame implements KeyListener
             if(stage.winner != null)
             {
                 System.out.println(stage.winner);
-                System.exit(0);
+                JOptionPane.showMessageDialog(null, stage.winner);
+                stage.winner = null;
             }
 
             dp.repaint();

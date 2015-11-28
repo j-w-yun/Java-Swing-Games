@@ -64,24 +64,32 @@ public class Player
 		for(int j = xPosBefore - radius; j < xPosBefore + radius; j++)
 		{
 			fill(j, yPosBefore + radius, By.FLOOR);
+			fill(j, yPosBefore + (radius + 1), By.FLOOR);
 			fill(j, yPosBefore - radius, By.FLOOR);
+			fill(j, yPosBefore - (radius + 1), By.FLOOR);
 		}
 		for(int k = yPosBefore - radius; k < yPosBefore + radius; k++)
 		{
 			fill(xPosBefore + radius, k, By.FLOOR);
+			fill(xPosBefore + (radius + 1), k, By.FLOOR);
 			fill(xPosBefore - radius, k, By.FLOOR);
+			fill(xPosBefore - (radius + 1), k, By.FLOOR);
 		}
 
 		// Make new box
 		for(int j = xPos - radius; j < xPos + radius; j++)
 		{
 			fill(j, yPos + radius, player);
+			fill(j, yPos + (radius + 1), player);
 			fill(j, yPos - radius, player);
+			fill(j, yPos - (radius + 1), player);
 		}
 		for(int k = yPos - radius; k < yPos + radius; k++)
 		{
 			fill(xPos - radius, k, player);
+			fill(xPos - (radius + 1), k, player);
 			fill(xPos + radius, k, player);
+			fill(xPos + (radius + 1), k, player);
 		}
 
 		if(facing == Move.RIGHT)
@@ -91,6 +99,7 @@ public class Player
 				if(stage.tile[xPos - radius][k].occupied != By.WALL)
 				{
 					fill(xPos + radius, k, By.FLOOR);
+					fill(xPos + (radius + 1), k, By.FLOOR);
 				}
 			}
 		}
@@ -101,6 +110,7 @@ public class Player
 				if(stage.tile[xPos - radius][k].occupied != By.WALL)
 				{
 					fill(xPos - radius, k, By.FLOOR);
+					fill(xPos - (radius + 1), k, By.FLOOR);
 				}
 			}
 		}
@@ -111,6 +121,7 @@ public class Player
 				if(stage.tile[j][yPos - radius].occupied != By.WALL)
 				{
 					fill(j, yPos - radius, By.FLOOR);
+					fill(j, yPos - (radius + 1), By.FLOOR);
 				}
 			}
 		}
@@ -120,7 +131,8 @@ public class Player
 			{
 				if(stage.tile[j][yPos + radius].occupied != By.WALL)
 				{
-					fill(j, yPos + radius, By.FLOOR);					
+					fill(j, yPos + radius, By.FLOOR);	
+					fill(j, yPos + (radius + 1), By.FLOOR);				
 				}
 			}
 		}
