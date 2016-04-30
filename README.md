@@ -10,20 +10,20 @@
   
   <b>PLAYER1</b>
   <br />
-  
-  Arrow Keys
+  MOVEMENT:
+  Arrah Kehs
   <br />
-  
-  Space Bar
+  SHOOT:
+  Schpace Bah
   <p />  
   
   <b>PLAYER2</b>
   <br />
-  
-  W, A, S, D Keys
+  MOVEMENT:
+  <font size="3" color="black">its a secret :)</font>
   <br />
-  
-  Shift Bar
+  SHOOT:
+  Schiff Bah
   <hr />
   
   <center>
