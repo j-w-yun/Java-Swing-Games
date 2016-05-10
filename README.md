@@ -31,40 +31,6 @@ Snapshot of gameplay.
   SHOOT:
   Schiff Bah
   <hr />
-  
-  <center>
-    <h3>Settings</h3>
-  </center>
-  
-  <b>PLAYER</b>
-  <br />
-  
-  DisplayPanel
-  <br />
-  
-  <b>PROJECTILE</b>
-  <br />
-  
-  MainFrame
-  <br />
-  
-  <b>COLOR SCHEME</b>
-  <br />
-  
-  DisplayPanel
-  <br />
-  
-  <b>FPS</b>
-  <br />
-  
-  MainFrame and all its extensions
-  <br />
-  
-  <b>WALLS</b>
-  <br />
-  
-  MainFrame and all its extensions
-  <hr />
 </body>
 
 
