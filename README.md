@@ -1,9 +1,11 @@
 # Prototype
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/1.png)
+<br>
 Only the offline option is implemented right now.
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
+<br>
 Snapshot of gameplay.
 
 <body>
@@ -69,4 +71,5 @@ Snapshot of gameplay.
 # Snake
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
+<br>
 Only the backbone structure is complete.
