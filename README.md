@@ -1,6 +1,10 @@
-<h2>
-  Main class: Prototype
-</h2>
+# Prototype
+
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/1.png)
+Only the offline option is implemented right now.
+
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
+Snapshot of gameplay.
 
 <body>
   <center>
@@ -60,3 +64,9 @@
   MainFrame and all its extensions
   <hr />
 </body>
+
+
+# Snake
+
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
+Only the backbone structure is complete.
