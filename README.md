@@ -70,6 +70,6 @@ Snapshot of gameplay.
 
 # Snake
 
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/3.png)
 <br>
 Only the backbone structure is complete.
