@@ -3,6 +3,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
+/**
+*	@author Jaewan Yun (Jay50@pitt.edu)
+*	@version 1.0.0
+*/
+
 public class DisplayPanel extends JPanel
 {
 	private Graphics g;

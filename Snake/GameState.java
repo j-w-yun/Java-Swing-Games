@@ -1,6 +1,11 @@
 import java.util.*;
 import java.awt.*;
 
+/**
+*	@author Jaewan Yun (Jay50@pitt.edu)
+*	@version 1.0.0
+*/
+
 // Trust me, java. Let me do my thang
 @SuppressWarnings("unchecked")
 public class GameState
