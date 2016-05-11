@@ -10,10 +10,14 @@ import java.awt.*;
 @SuppressWarnings("unchecked")
 public class GameState
 {
-	private HashMap state;
+	private volatile HashMap state;
 	// Reference holder
 	private Key[][] keys;
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public GameState(int x, int y)
 	{
 		state = new HashMap();
@@ -27,37 +31,65 @@ public class GameState
 		}
 	}
 
-	public void add(Key key, Color value)
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized void add(Key key, Color value)
 	{
 		state.put(key, value);
 	}
 
-	public void delete(Key key)
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized void delete(Key key)
 	{
 		state.remove(key);
 	}
 
-	public Key acquireKey(int x, int y)
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized Key acquireKey(int x, int y)
 	{
 		return keys[x][y];
 	}
 
-	public boolean occupied(Key key)
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized boolean occupied(Key key)
 	{
 		return state.containsKey(key);
 	}
 
-	public int length()
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized int length()
 	{
 		return state.keySet().size();
 	}
 
-	public Set getKeys()
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized Set getKeys()
 	{
 		return state.keySet();
 	}
 
-	public void clear()
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
+	public synchronized void clear()
 	{
 		state.clear();
 	}
@@ -69,6 +101,10 @@ class Key
 	public final int x;
 	public final int y;
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public Key(int x, int y)
 	{
 		this.x = x;

@@ -21,6 +21,10 @@ public class MainFrame extends JFrame implements KeyListener
 
 	private boolean wait;
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public MainFrame(String title)
 	{
 		super(title);
@@ -34,6 +38,9 @@ public class MainFrame extends JFrame implements KeyListener
 		centerWindow();
 
 		addKeyListener(this);
+
+		// My lazy game loop. Run with higher value on supercomputers :) vice versa for slower comps.
+		// TODO : implement proper gameloop with variable timer setting for difficulty and game progression
 		new Timer(70, paintTimer).start();
 
 		posx = 10;
@@ -47,6 +54,10 @@ public class MainFrame extends JFrame implements KeyListener
 		setVisible(true);
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	Action paintTimer = new AbstractAction()
 	{
 		@Override public void actionPerformed(ActionEvent e)
@@ -76,6 +87,10 @@ public class MainFrame extends JFrame implements KeyListener
 		}
 	};
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	@Override public void keyPressed(KeyEvent e)
 	{
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT && right)
@@ -140,10 +155,22 @@ public class MainFrame extends JFrame implements KeyListener
 		}
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	@Override public void keyReleased(KeyEvent e) {}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	@Override public void keyTyped(KeyEvent e) {}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	private void centerWindow()
 	{
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();

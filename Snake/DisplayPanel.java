@@ -30,6 +30,10 @@ public class DisplayPanel extends JPanel
 
 	private GameState state;
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public DisplayPanel()
 	{
 		setOpaque(true);
@@ -45,6 +49,10 @@ public class DisplayPanel extends JPanel
 		queue = new JayList<Key>();
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -65,6 +73,10 @@ public class DisplayPanel extends JPanel
 			drawDot(foodX, foodY, Color.GREEN);
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	private void drawGrid(Color color)
 	{
 		g.setColor(color);
@@ -79,6 +91,10 @@ public class DisplayPanel extends JPanel
 		}
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public void food(int x, int y)
 	{
 		if(!foodExists)
@@ -90,6 +106,10 @@ public class DisplayPanel extends JPanel
 		}
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public void fill(int x, int y, Color color)
 	{
 		if(!foodExists)
@@ -120,6 +140,10 @@ public class DisplayPanel extends JPanel
 		}
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public void lose()
 	{
 		state.clear();
@@ -127,6 +151,10 @@ public class DisplayPanel extends JPanel
 		System.exit(0);
 	}
 
+	/**
+	*	@since 1.0.0
+	*	@author Jaewan Yun (Jay50@pitt.edu)
+	*/
 	public void drawDot(int x, int y, Color color)
 	{
 		g.setColor(color);
