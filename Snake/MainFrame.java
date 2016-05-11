@@ -14,6 +14,8 @@ public class MainFrame extends JFrame implements KeyListener
 	private boolean left;
 	private boolean right;
 
+	private boolean wait;
+
 	public MainFrame(String title)
 	{
 		super(title);
@@ -27,10 +29,11 @@ public class MainFrame extends JFrame implements KeyListener
 		centerWindow();
 
 		addKeyListener(this);
-		new Timer(10, paintTimer).start();
+		new Timer(70, paintTimer).start();
 
-		posx = 50;
-		posy = 50;
+		posx = 10;
+		posy = 10;
+
 		right = false;
 		left = false;
 		up = false;
@@ -41,74 +44,100 @@ public class MainFrame extends JFrame implements KeyListener
 
 	Action paintTimer = new AbstractAction()
 	{
-		public void actionPerformed(ActionEvent e)
+		@Override public void actionPerformed(ActionEvent e)
 		{
 			if(right)
 			{
 				dp.fill(++posx, posy, Color.BLACK);
+				wait = false;
 			}
 			else if(left)
 			{
 				dp.fill(--posx, posy, Color.BLACK);
+				wait = false;
 			}
 			else if(down)
 			{
 				dp.fill(posx, ++posy, Color.BLACK);
+				wait = false;
 			}
 			else if(up)
 			{
 				dp.fill(posx, --posy, Color.BLACK);
+				wait = false;
 			}
 
 			dp.repaint();
 		}
 	};
 
-	public void keyPressed(KeyEvent e)
+	@Override public void keyPressed(KeyEvent e)
 	{
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT && right)
+			return;
+		if(e.getKeyCode() == KeyEvent.VK_LEFT && left)
+			return;
+		if(e.getKeyCode() == KeyEvent.VK_UP && up)
+			return;
+		if(e.getKeyCode() == KeyEvent.VK_DOWN && down)
+			return;
+
+		if(!wait)
 		{
-			dp.fill(++posx, posy, Color.BLACK);
-			right = true;
-			left = false;
-			up = false;
-			down = false;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT)
-		{
-			dp.fill(--posx, posy, Color.BLACK);
-			right = false;
-			left = true;
-			up = false;
-			down = false;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_DOWN)
-		{
-			dp.fill(posx, ++posy, Color.BLACK);
-			right = false;
-			left = false;
-			up = false;
-			down = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_UP)
-		{
-			dp.fill(posx, --posy, Color.BLACK);
-			right = false;
-			left = false;
-			up = true;
-			down = false;
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+			{
+				if(!left)
+				{
+					right = true;
+					left = false;
+					up = false;
+					down = false;
+
+					wait = true;
+				}
+			}
+			if(e.getKeyCode() == KeyEvent.VK_LEFT)
+			{
+				if(!right)
+				{
+					right = false;
+					left = true;
+					up = false;
+					down = false;
+
+					wait = true;
+				}
+			}
+			if(e.getKeyCode() == KeyEvent.VK_DOWN)
+			{
+				if(!up)
+				{
+					right = false;
+					left = false;
+					up = false;
+					down = true;
+
+					wait = true;
+				}
+			}
+			if(e.getKeyCode() == KeyEvent.VK_UP)
+			{
+				if(!down)
+				{
+					right = false;
+					left = false;
+					up = true;
+					down = false;
+
+					wait = true;
+				}
+			}
 		}
 	}
 
-	public void keyReleased(KeyEvent e)
-	{
+	@Override public void keyReleased(KeyEvent e) {}
 
-	}
-
-	public void keyTyped(KeyEvent e)
-	{
-
-	}
+	@Override public void keyTyped(KeyEvent e) {}
 
 	private void centerWindow()
 	{

@@ -40,19 +40,6 @@ public class GameState
 	public boolean occupied(Key key)
 	{
 		return state.containsKey(key);
-
-		// // TOO SLOW!
-		// Iterator it = state.keySet().iterator();
-		// while(it.hasNext())
-		// {
-		// 	int[] read = (int[]) it.next();
-		// 	if(read[0] == key[0] && read[1] == key[1])
-		// 	{
-		// 		return true;
-		// 	}
-		// }
-
-		// return false;
 	}
 
 	public int length()
@@ -63,6 +50,11 @@ public class GameState
 	public Set getKeys()
 	{
 		return state.keySet();
+	}
+
+	public void clear()
+	{
+		state.clear();
 	}
 
 }
