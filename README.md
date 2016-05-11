@@ -6,7 +6,8 @@ Only the offline option is implemented right now.
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
 <br>
-Snapshot of gameplay.
+Snapshot of prototype.
+<br>
 
 <body>
   <center>
@@ -36,6 +37,21 @@ Snapshot of gameplay.
 
 # Snake
 
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/3.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/4.png)
 <br>
-Only the backbone structure is complete.
+Snapshot of snake.
+<br>
+
+<body>
+  <center>
+  <hr />
+    <h3>Controls:</h3>
+  </center>
+  
+  <b>PLAYER1</b>
+  <br />
+  MOVEMENT:
+  Arrow keys
+  <br />
+  <p />  
+</body>
