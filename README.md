@@ -55,3 +55,31 @@ Snapshot of snake.
   <br />
   <p />  
 </body>
+
+
+# Weave
+
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/5.png)
+<br>
+Snapshot of an unsolved weave map.
+<br>
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/6.png)
+<br>
+Snapshot of a solved weave map.
+<br>
+
+<body>
+  <center>
+  <hr />
+    <h3>Controls:</h3>
+  </center>
+  
+  <b>PLAYER1</b>
+  <br />
+  MOVEMENT:
+  Arrow keys
+  <br />
+  UNDO: Shift bar
+  <br />
+  <p />  
+</body>
