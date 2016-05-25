@@ -67,6 +67,14 @@ Snapshot of an unsolved weave map.
 <br>
 Snapshot of a solved weave map.
 <br>
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/7.png)
+<br>
+Updated map generating algorithm.
+<br>
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/8.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/9.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/10.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/11.png)
 
 <body>
   <center>
