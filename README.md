@@ -1,3 +1,6 @@
+# Contents : Prototype, Snake, Weave
+# Author: Jaewan Yun (JAY50@pitt.edu)
+
 # Prototype
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/1.png)
