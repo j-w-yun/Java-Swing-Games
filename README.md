@@ -1,9 +1,6 @@
-# Contents : Prototype, Snake, Weave
-# Prototype
+# JavaSwingGames
 
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/1.png)
-<br>
-Only the offline option is implemented right now.
+# Prototype
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/2.png)
 <br>
@@ -19,19 +16,19 @@ Snapshot of prototype.
   <b>PLAYER1</b>
   <br />
   MOVEMENT:
-  Arrah Kehs
+  Arrow Keys
   <br />
   SHOOT:
-  Schpace Bah
+  Space Bar
   <p />  
   
   <b>PLAYER2</b>
   <br />
   MOVEMENT:
-  <font size="3" color="black">its a secret :)</font>
+  WASD
   <br />
   SHOOT:
-  Schiff Bah
+  Shift Key
   <hr />
 </body>
 
@@ -62,6 +59,8 @@ Snapshot of snake.
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/6.png)
 <br>
+Snapshot of weave.
+<br>
 
 <body>
   <center>
@@ -72,9 +71,10 @@ Snapshot of snake.
   <b>PLAYER1</b>
   <br />
   MOVEMENT:
-  Arrow keys
+  Arrow keys / Mouse
   <br />
-  UNDO: Shift bar
+  UNDO:
+  Shift bar / Mouse
   <br />
   <p />  
 </body>
