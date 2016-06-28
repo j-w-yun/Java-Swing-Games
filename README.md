@@ -1,7 +1,4 @@
 # Contents : Prototype, Snake, Weave
-<br>
-Author: Jaewan Yun (JAY50@pitt.edu)
-
 # Prototype
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/1.png)
@@ -65,12 +62,6 @@ Snapshot of snake.
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/6.png)
 <br>
-Android version
-<br>
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/8.png)
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/9.png)
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/10.png)
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/11.png)
 
 <body>
   <center>
@@ -87,3 +78,10 @@ Android version
   <br />
   <p />  
 </body>
+
+
+# Brought to you by
+      Jaewan Yun
+      Undergraduate Student
+      Molecular Biology, Chemistry, Computer Science
+      University of Pittsburgh
