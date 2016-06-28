@@ -1,5 +1,6 @@
 # Contents : Prototype, Snake, Weave
-# Author: Jaewan Yun (JAY50@pitt.edu)
+<br>
+Author: Jaewan Yun (JAY50@pitt.edu)
 
 # Prototype
 
@@ -64,15 +65,7 @@ Snapshot of snake.
 
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/5.png)
 <br>
-Snapshot of an unsolved weave map.
-<br>
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/6.png)
-<br>
-Snapshot of a solved weave map.
-<br>
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/7.png)
-<br>
-Updated map generating algorithm.
+Android version
 <br>
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/8.png)
 ![alt tag](https://github.com/jaewany/Game/blob/master/pics/9.png)
