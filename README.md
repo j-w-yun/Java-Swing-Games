@@ -63,7 +63,7 @@ Snapshot of snake.
 
 # Weave
 
-![alt tag](https://github.com/jaewany/Game/blob/master/pics/5.png)
+![alt tag](https://github.com/jaewany/Game/blob/master/pics/6.png)
 <br>
 Android version
 <br>
